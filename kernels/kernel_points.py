@@ -30,10 +30,15 @@ from matplotlib import cm
 from os import makedirs
 from os.path import join, exists
 
+
+import os, sys
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+sys.path.append(ROOT_DIR)
+# print(ROOT_DIR)
+sys.path.append(os.path.join(ROOT_DIR, 'utils'))
 from utils.ply import read_ply, write_ply
 from utils.config import bcolors
-
-
 # ------------------------------------------------------------------------------------------
 #
 #           Functions
