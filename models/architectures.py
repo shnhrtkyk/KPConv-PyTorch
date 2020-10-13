@@ -14,8 +14,15 @@
 #      Hugues THOMAS - 06/03/2020
 #
 
-from models.blocks import *
+
 import numpy as np
+import os , sys
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+sys.path.append(ROOT_DIR)
+# print(ROOT_DIR)
+sys.path.append(os.path.join(ROOT_DIR, 'models'))
+from models.blocks import *
 
 
 def p2p_fitting_regularizer(net):
@@ -359,6 +366,7 @@ class KPFCNN(nn.Module):
         outputs = torch.transpose(outputs, 0, 1)
         outputs = outputs.unsqueeze(0)
         target = target.unsqueeze(0)
+        target = target.long()
 
         # Cross entropy loss
         self.output_loss = self.criterion(outputs, target)
